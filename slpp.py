@@ -28,8 +28,9 @@ class SLPP(object):
         self.tab = '\t'
 
     def decode(self, text):
-        if not text or not isinstance(text, basestring):
-            return
+        # if not text or not isinstance(text, basestring):
+        if not text or not isinstance(text, str):
+                return
         #FIXME: only short comments removed
         reg = re.compile('--.*$', re.M)
         text = reg.sub('', text, 0)
@@ -129,7 +130,7 @@ class SLPP(object):
                     if self.ch != end:
                         s += '\\'
                 s += self.ch
-        print ERRORS['unexp_end_string']
+        print(ERRORS['unexp_end_string'])
 
     def object(self):
         o = {}
@@ -181,7 +182,7 @@ class SLPP(object):
                             o[idx] = k
                         idx += 1
                         k = None
-        print ERRORS['unexp_end_table'] #Bad exit here
+        print(ERRORS['unexp_end_table']) #Bad exit here
 
     words = {'true': True, 'false': False, 'nil': None}
     def word(self):
